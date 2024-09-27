@@ -6,6 +6,10 @@ class User extends Model {
   checkPassword(offeredPassword){
     return bcrypt.compareSync(offeredPassword, this.password);
   }
+
+  encryptPassword(password){
+    return bcrypt.hashSync(password, 10)
+  }
 }
 
 User.init(
@@ -35,8 +39,22 @@ User.init(
     hooks: {
       // Before record creation, hash User.password value
       beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        // Encrypt password
+        newUserData.password = this.encryptPassword(newUserData.password);
         return newUserData;
+      },
+      // Before record update
+      beforeSave: async (newUserData) => {
+        
+        // Check if password changed 
+        if(newUserData.changed('password')){
+          // Check if new password does not match existing password (after decryption check)
+          if(this.checkPassword(newUserData.password)){
+            // If so, encrypt password
+            newUserData.password = this.encryptPassword(password, 10);
+          }
+        }
+        return newUserData.password; 
       }
     },
     sequelize, // DB connection instance (from import) 
