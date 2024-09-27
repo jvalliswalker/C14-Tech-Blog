@@ -1,0 +1,17 @@
+:root {
+    --background-color: #D9EAD3;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+}
+
+header {
+    background-color: black;
+    color: white;
+}
+
+ul {
+    margin: 0px;
+}
