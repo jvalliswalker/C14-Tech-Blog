@@ -7,11 +7,13 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+// Create express app
 const app = express();
+
+// Dynamically set port
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create()
-
+// Create session object and pass to express app
 const sessionObject = {
   secret: "Tech Blog Secret",
   cookie: {},
@@ -23,6 +25,10 @@ const sessionObject = {
 };
 
 app.use(session(sessionObject));
+
+// Create handlebars object and set as app engine
+const hbs = exphbs.create()
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -36,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(routes);
 
+// Start server
 sequelize.sync({force: false}).then(() => {
   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
 })
