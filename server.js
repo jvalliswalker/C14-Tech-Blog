@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-// const routes = require('./controllers');
+const routes = require('./controllers/index');
 // const helpers = require('./utils');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -40,7 +40,8 @@ app.use(express.urlencoded({ extended: true}));
 // Set folder for public resources
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(routes);
+// Use routes
+app.use(routes);
 
 // Start server
 sequelize.sync({force: false}).then(() => {
