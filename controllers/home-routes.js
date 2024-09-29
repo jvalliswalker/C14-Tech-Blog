@@ -2,12 +2,21 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models/index');
 const { checkLoginStatus } = require('../utils/logging-handler');
 
-router.get('/', (req, res) => {
-  res.render('homepage');
+function isLoggedIn(req){
+  return req.session ? req.session.logged_in : false;
+}
+
+router.get('/', async (req, res) => {
+  res.render('homepage', {
+    loggedIn: isLoggedIn(req)
+   } 
+  );
 })
 
 router.get('/dashboard', checkLoginStatus, async (req, res) => {
-  res.render('dashboard');
+  res.render('dashboard', {
+    loggedIn: isLoggedIn(req)
+  });
 })
 
 router.get('/login',(req, res) => {
