@@ -11,5 +11,5 @@ async function handleLogIn(formData){
     }
   })
 
-  return loginResponse.ok;
+  return loginResponse;
 }
