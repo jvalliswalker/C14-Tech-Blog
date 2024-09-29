@@ -1,16 +1,17 @@
-const router = require('express').Router();
-const { User } = require('../../models/index');
+const router = require("express").Router();
+const { User } = require("../../models/index");
 
-
-router.post('/login', async (req, res) => {
-  try{
+router.post("/login", async (req, res) => {
+  try {
     // Query db for user based on passed username
-    const user = await User.findOne({where: {
-      username: req.body.username
-    }});
+    const user = await User.findOne({
+      where: {
+        username: req.body.username,
+      },
+    });
 
     // Guard clause for no username found
-    if(user == false){
+    if (user == false) {
       sendInvalidCredentailsResponse(res);
       return;
     }
@@ -19,7 +20,7 @@ router.post('/login', async (req, res) => {
     const passwordValid = await user.checkPassword(req.body.password);
 
     // Guard clause for invalid password
-    if(passwordValid == false){
+    if (passwordValid == false) {
       sendInvalidCredentailsResponse(res);
       return;
     }
@@ -32,25 +33,41 @@ router.post('/login', async (req, res) => {
       // Return success object
       res.json({
         login_successful: true,
-        message: 'Login successful'
-      })
-    })
-
-  }
-  // Return error code and message
-  catch (err) {
+      });
+    });
+  } catch (err) {
+    // Return error code and message
     res.status(400).json(err);
   }
-})
+});
+
+router.post("/sign-up", async (req, res) => {
+  try {
+    // Query db for user based on passed username
+    const user = await User.create({
+      user_name: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    res.status(200).send({
+      signup_successful: true,
+    });
+  } catch (err) {
+    // Return error code and message
+    res.status(400).json({
+      error: err,
+    });
+  }
+});
 
 // Helper Functions
 // =====================
-function sendInvalidCredentailsResponse(res){
+function sendInvalidCredentailsResponse(res) {
   res.status(400).json({
     login_successful: false,
-    message: 'Incorrect username or password. Please try again.'}
-  );
+    error: "Incorrect username or password. Please try again.",
+  });
 }
-
 
 module.exports = router;
