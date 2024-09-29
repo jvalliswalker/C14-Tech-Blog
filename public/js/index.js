@@ -50,6 +50,16 @@ document.body.addEventListener("submit", async (event) => {
   }
 })
 
+document.body.addEventListener('click', async (event) => {
+
+  const elementId = event.target.id;
+
+  if(elementId == 'button-logout'){
+    await handleLogout();
+    document.location.replace('/');
+  }
+})
+
 // Functions
 // ====================
 function getFormsData(){
