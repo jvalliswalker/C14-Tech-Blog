@@ -6,7 +6,7 @@ const formIdSignUp = 'form-sign-up';
 // Process
 // ====================
 
-document.body.addEventListener("submit", (event) => {
+document.body.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formsData = getFormsData();
   
@@ -16,10 +16,11 @@ document.body.addEventListener("submit", (event) => {
     document.getElementById('login-error-message').hidden = true;
  
     // Call login endpoint with credentials and return response
-    const loginResponse = handleLogIn(formsData[formIdLogIn])
-
+    const loginResponseRaw = await handleLogIn(formsData[formIdLogIn])    
+    const loginResponse = await loginResponseRaw.json()
+    
     // Return to homepage if login successful
-    if(loginResponse.loggin_successful == true){
+    if(loginResponse.login_successful == true){
       document.location.replace('/');
     }
     // Display login error message if login unsuccessful
@@ -37,9 +38,10 @@ document.body.addEventListener("submit", (event) => {
     passwordMismatchError.hidden = true;
     somethingWrongError.hidden = true;
 
-    const signUpResponse = handleSignUp(formsData[formIdSignUp]);
+    const signUpResponseRaw = await handleSignUp(formsData[formIdSignUp]);
+    const signUpResponse = await signUpResponseRaw.json();
 
-    if(signUpResponse.signup_succssful){
+    if(signUpResponse.signup_successful){
       document.location.replace('/');
     }
     else {
@@ -50,7 +52,6 @@ document.body.addEventListener("submit", (event) => {
 
 // Functions
 // ====================
-
 function getFormsData(){
 
   // Query elements
