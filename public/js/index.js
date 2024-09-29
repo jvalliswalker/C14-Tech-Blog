@@ -10,7 +10,7 @@ document.body.addEventListener("submit", (event) => {
   const formsData = getFormsData();
   
   if(Object.keys(formsData).includes(formIdLogIn)){
-    handleSignIn(formsData[formIdLogIn])
+    handleLogIn(formsData[formIdLogIn])
   }
 })
 
