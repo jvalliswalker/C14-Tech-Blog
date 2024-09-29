@@ -1,6 +1,6 @@
 // Variables
 // ====================
-const formIdSignIn = 'form-sign-in'; 
+const formIdLogIn = 'form-log-in'; 
 
 // Process
 // ====================
@@ -9,8 +9,8 @@ document.body.addEventListener("submit", (event) => {
   event.preventDefault();
   const formsData = getFormsData();
   
-  if(Object.keys(formsData).includes(formIdSignIn)){
-    handleSignIn(formsData[formIdSignIn])
+  if(Object.keys(formsData).includes(formIdLogIn)){
+    handleSignIn(formsData[formIdLogIn])
   }
 })
 
