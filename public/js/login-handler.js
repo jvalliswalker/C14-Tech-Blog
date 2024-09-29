@@ -1,6 +1,6 @@
 async function handleLogIn(formData){
 
-  const loginResponse = await fetch('/api/login', {
+  const loginResponse = await fetch('/api/user/login', {
     method: 'POST',
     body: JSON.stringify({
       username: formData['form-login-username'],
