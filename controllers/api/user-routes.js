@@ -6,7 +6,7 @@ router.post("/login", async (req, res) => {
     // Query db for user based on passed username
     const user = await User.findOne({
       where: {
-        username: req.body.username,
+        user_name: req.body.username,
       },
     });
 
@@ -50,14 +50,12 @@ router.post("/sign-up", async (req, res) => {
       password: req.body.password,
     });
 
-    res.status(200).send({
+    res.status(200).json({
       signup_successful: true,
     });
   } catch (err) {
     // Return error code and message
-    res.status(400).json({
-      error: err,
-    });
+    res.status(400).json(err);
   }
 });
 
