@@ -4,10 +4,10 @@ const sequelize = require('../config/connection');
 
 class User extends Model {
   checkPassword(offeredPassword){
-    return bcrypt.compareSync(offeredPassword, this.password);
+    return bcrypt.compare(offeredPassword, this.password);
   }
 
-  encryptPassword(password){
+  static encryptPassword(password){
     return bcrypt.hashSync(password, 10)
   }
 }
@@ -22,7 +22,8 @@ User.init(
     },
     user_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     email: {
       type: DataTypes.STRING,
@@ -40,22 +41,22 @@ User.init(
       // Before record creation, hash User.password value
       beforeCreate: async (newUserData) => {
         // Encrypt password
-        newUserData.password = this.encryptPassword(newUserData.password);
+        newUserData.password = User.encryptPassword(newUserData.password);
         return newUserData;
-      },
-      // Before record update
-      beforeSave: async (newUserData) => {
-        
-        // Check if password changed 
-        if(newUserData.changed('password')){
-          // Check if new password does not match existing password (after decryption check)
-          if(this.checkPassword(newUserData.password)){
-            // If so, encrypt password
-            newUserData.password = this.encryptPassword(password, 10);
-          }
-        }
-        return newUserData.password; 
       }
+      // Before record update
+      // beforeSave: async (newUserData) => {
+        
+      //   // Check if password changed 
+      //   if(newUserData.changed('password')){
+      //     // Check if new password does not match existing password (after decryption check)
+      //     if(.checkPassword(newUserData.password)){
+      //       // If so, encrypt password
+      //       newUserData.password = User.encryptPassword(newUserData.password, 10);
+      //     }
+      //   }
+      //   return newUserData.password; 
+      // }
     },
     sequelize, // DB connection instance (from import) 
     timestamps: false, 
