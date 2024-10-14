@@ -2,6 +2,7 @@
 // ====================
 const formIdLogIn = 'form-login'; 
 const formIdSignUp = 'form-sign-up';
+const formIdNewPost = 'form-new-post';
 
 // Process
 // ====================
@@ -48,6 +49,21 @@ document.body.addEventListener("submit", async (event) => {
       somethingWrongError.hidden = false;
     }
   }
+
+  // Handle create new post
+  if(Object.keys(formsData).includes(formIdNewPost)){
+
+    const submitPostResponseRaw = await handleSubmitPost((formsData[formIdNewPost]));
+    const submitPostResponse = await submitPostResponseRaw.json();
+
+    if(submitPostResponse.submit_successful){
+      document.location.replace('/');
+    }
+    else {
+      console.log('error')
+    }
+
+  }
 })
 
 document.body.addEventListener('click', async (event) => {
@@ -66,6 +82,8 @@ function getFormsData(){
 
   // Query elements
   const inputs = document.querySelectorAll('input');
+  const textareas = document.querySelectorAll('textarea');
+
   const forms = document.querySelectorAll('form');
   
   // Create and seed form from forms on page
@@ -74,12 +92,19 @@ function getFormsData(){
   for(const form of forms){
     formIdToInputsMap[form.id] = {};
   }
+  console.log(forms)
+  console.log(inputs)
+  console.log(textareas)
 
   // Assign inputs to form map
   for(const input of inputs){
     formIdToInputsMap[input.dataset.formId][input.id] = input.value;
   }
-
+  
+  for(const textarea of textareas){
+    formIdToInputsMap[input.dataset.formId][textarea.id] = textarea.value;
+  }
+  console.log(formIdToInputsMap)
   // Return map
   return formIdToInputsMap;
 }
