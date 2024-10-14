@@ -19,6 +19,31 @@ router.get('/dashboard', checkLoginStatus, async (req, res) => {
   });
 })
 
+router.get('/new-post', checkLoginStatus, async (req, res) => {
+  
+  const fields = [
+    {
+      id: 'new-post-title',
+      label: 'Title',
+      formId: 'form-new-post',
+      type: 'text'
+    },
+    {
+      id: 'new-post-content',
+      label: 'Content',
+      formId: 'form-new-post',
+      type: 'textarea',
+      isTextArea: true,
+      rows: 5
+    },
+  ]
+
+  res.render('new-post', {
+    title: 'New Blog Post',
+    fields: fields
+  });
+})
+
 router.get('/login',(req, res) => {
   res.render('login');
 })
