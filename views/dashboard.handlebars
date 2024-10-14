@@ -1,9 +1,28 @@
 <div>
-    <p>Dashboard placeholder</p>
-    <div>
-        <ul>
-            <li>Existing blog posts</li>
-            <li>New Blog post button</li>
-        </ul>
+  <nav class="navbar navbar-expand-lg bg-black">
+    <div class="page-title">
+      Dashboard
     </div>
+  </nav>
+  <div class="page-body">
+    <div class="container mx-0 px-0">
+      <div class="row">
+        <div class="col">
+          <h3>New Post</h3>
+          <div>
+            <a href="/new-post" class="btn btn-primary">Create new post</a>
+          </div>
+
+        </div>
+        <div class="col">
+          <h3>Existing posts</h3>
+          <div>
+            {{#each posts}}
+              {{!-- {{> blog-post this}} --}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
