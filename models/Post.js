@@ -36,6 +36,12 @@ Post.init(
     }
   },
   {
+    hooks: {
+      beforeCreate: async (newPostData) => {
+        newPostData.created_date = new Date();
+        return newPostData;
+      }
+    },
     sequelize, // DB connection instance (from import) 
     timestamps: false, 
     freezeTableName: true, // Assures modelName is name of table in sql
