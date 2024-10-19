@@ -29,6 +29,10 @@ app.use(session(sessionObject));
 // Create handlebars object and set as app engine
 const hbs = exphbs.create()
 
+hbs.handlebars.registerHelper("formatDate", function(date) {
+  return date.toLocaleDateString('en-US', {hour: 'numeric', minute: 'numeric'});
+});
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
