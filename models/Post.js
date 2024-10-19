@@ -37,9 +37,9 @@ Post.init(
   },
   {
     hooks: {
-      beforeCreate: async (newPostData) => {
-        newPostData.created_date = new Date();
-        return newPostData;
+      beforeValidate: async (record) => {
+        record.created_date = new Date();
+        return record;
       }
     },
     sequelize, // DB connection instance (from import) 
