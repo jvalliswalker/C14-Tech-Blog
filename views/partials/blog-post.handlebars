@@ -19,5 +19,8 @@
     {{#if hasEditButton}}
     <div class="btn btn-primary" data-post-id="{{post.id}}" data-button-type="editPost">Edit</div>
     {{/if}}
+    {{#if hasCommentButton}}
+    <div class="btn btn-primary" data-post-id="{{post.id}}" data-button-type="commentOnPost">Comment</div>
+    {{/if}}
   </div>
 </div>
