@@ -18,10 +18,9 @@
     <div style="max-height: 65vh; overflow: scroll;">
       {{#each posts}}
         <div class="mb-3">
-          {{> blog-post post=this hasEditButton=true}}
+          {{> blog-post post=this hasEditButton=true overflow="overflow-hidden"}}
         </div>
       {{/each}}
     </div>
   </div>
-  <script src="/js/post-button-handler.js"></script>
 </div>
