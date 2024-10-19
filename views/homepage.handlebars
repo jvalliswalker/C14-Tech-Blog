@@ -1,18 +1,18 @@
 <div>
-  {{#if loggedIn}}
-    <div>
-      <nav class="navbar navbar-expand-lg bg-black">
-        <div class="page-title">
-          The Tech Blog
-        </div>
-      </nav>
-      <div class="page-body">
-        existing blogs placeholder
+  <div>
+    <nav class="navbar navbar-expand-lg bg-black">
+      <div class="page-title">
+        The Tech Blog
+      </div>
+    </nav>
+    <div class="page-body">
+      <div style="max-height: 65vh; overflow: scroll;">
+        {{#each posts}}
+          <div class="mb-3">
+            {{> blog-post post=this hasCommentButton=true}}
+          </div>
+        {{/each}}
       </div>
     </div>
-  {{else}}
-    <div>
-      Please log in to view your blog posts
-    </div>
-  {{/if}}
+  </div>
 </div>
