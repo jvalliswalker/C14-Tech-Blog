@@ -116,5 +116,43 @@ router.get('/post/edit/:postId', checkLoginStatus, async (req, res) => {
   res.render('edit-post', { fields: fields, title: 'Update Post', formId: 'form-edit-post', postId: req.params.postId });
 })
 
+router.get('/post/comment/:postId', checkLoginStatus, async (req, res) => {
+
+  const { data, error } = await withCatch(Post.findOne({
+    where: {
+      id: req.params.postId
+    }
+  }))
+
+  if (error) {
+    res.status(500).send();
+  }
+
+  if(!data){
+    res.status(400).send();
+  }
+
+  const fields = [
+    {
+      id: 'existing-post-title',
+      label: 'Title',
+      formId: 'form-edit-post',
+      type: 'text',
+      value: data.title
+    },
+    {
+      id: 'existing-post-content',
+      label: 'Content',
+      formId: 'form-edit-post',
+      type: 'textarea',
+      value: data.content,
+      isTextArea: true,
+      rows: 5
+    },
+  ]
+
+  res.render('comment-post', { post: data.get({plain: true}) });
+})
+
 
 module.exports = router;
