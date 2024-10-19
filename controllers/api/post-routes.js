@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Post } = require("../../models/index");
+const { checkLoginStatus } = require('../../utils/logging-handler');
 const { withCatch } = require("../../utils/utils");
 
 router.post("/submit", async (req, res) => {
@@ -23,7 +24,7 @@ router.post("/submit", async (req, res) => {
   }
 });
 
-router.post("/edit", async (req, res) => {
+router.post("/edit", checkLoginStatus, async (req, res) => {
 
   console.log(req.body);
 
@@ -52,7 +53,7 @@ router.post("/edit", async (req, res) => {
   else res.status(400).send();
 });
 
-router.delete("/delete/:postId", async (req, res) => {
+router.delete("/delete/:postId", checkLoginStatus, async (req, res) => {
 
   const { data, error } = await withCatch(
     Post.destroy(
