@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header pt-3">
+    <div class="row d-flex justify-content-between">
+      <div class="col">
+        <h5 class="card-title">{{post.title}}</h5>
+      </div>
+      <div class="col d-flex justify-content-end">
+        {{formatDate post.created_date }}
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <p
+      class="card-text overflow-hidden px-3 overflow-x-hidden"
+      style="max-height: 200px;"
+    >{{post.content}}</p>
+  </div>
+  <div class="card-footer">
+    {{#if hasEditButton}}
+    <div class="btn btn-primary" data-post-id="{{post.id}}" data-button-type="editPost">Edit</div>
+    {{/if}}
+    {{#if hasCommentButton}}
+    <div class="btn btn-primary" data-post-id="{{post.id}}" data-button-type="commentOnPost">Comment</div>
+    {{/if}}
+  </div>
+</div>
