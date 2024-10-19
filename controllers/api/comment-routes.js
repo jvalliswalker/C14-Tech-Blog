@@ -10,9 +10,16 @@ router.get('/:postId', async (req, res) => {
     }
   }));
 
-  if(error) res.status(500).send();
+  if(error) {
+    res.status(500).send();
+  }
 
-  res.status(200).json(data.map(x => x.get({plain: true})));
+  if(data) {
+    res.status(200).json(data.map(x => x.get({plain: true})));
+  }
+  else {
+    res.status(200).send([]);
+  }
 })
 
 module.exports = router;
