@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" data-post-id="{{post.id}}">
   <div class="card-header pt-3">
     <div class="row d-flex justify-content-between">
       <div class="col">
@@ -18,9 +18,6 @@
   <div class="card-footer">
     {{#if hasEditButton}}
     <div class="btn btn-primary" data-post-id="{{post.id}}" data-button-type="editPost">Edit</div>
-    {{/if}}
-    {{#if hasCommentButton}}
-    <div class="btn btn-primary" data-post-id="{{post.id}}" data-button-type="commentOnPost">Comment</div>
     {{/if}}
   </div>
 </div>
