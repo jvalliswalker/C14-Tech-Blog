@@ -4,7 +4,11 @@ This project demonstrates the MVC model via a simple Tech Blog mockup. The Contr
 
 ## Screenshot
 
+![image](https://github.com/user-attachments/assets/d1c5bb0c-b471-4ede-b584-5fdb7a947700)
 
+![image](https://github.com/user-attachments/assets/59b77033-d116-417d-b505-654f7b8d468a)
+
+![image](https://github.com/user-attachments/assets/7ae48f02-0b90-447a-953e-f637b2559aa1)
 
 ## Site Link
 
