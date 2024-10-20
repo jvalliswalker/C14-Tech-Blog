@@ -126,7 +126,7 @@ router.get("/post/comment/:postId", checkLoginStatus, async (req, res) => {
       where: {
         id: req.params.postId,
       },
-      include: [{ model: Comment, include: [User], order: [["id", "ASC"]] }],
+      include: [{ model: Comment, include: [User], order: [["created_date", "ASC"]] }],
     })
   );
 
@@ -158,11 +158,12 @@ router.get("/post/comment/:postId", checkLoginStatus, async (req, res) => {
   ];
 
   const post = data.get({ plain: true });
-  console.log(post.comments);
+  
+  const comments = post.comments.sort((a, b) => b.created_date - a.created_date);
 
   res.render("comment-post", {
     post: post,
-    comments: post.comments,
+    comments: comments,
     loggedIn: isLoggedIn(req),
   });
 });
