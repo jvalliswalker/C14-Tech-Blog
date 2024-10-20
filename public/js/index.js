@@ -43,12 +43,11 @@ document.body.addEventListener("submit", async (event) => {
 
     passwordMismatchError.hidden = true;
     somethingWrongError.hidden = true;
+    console.log(formsData[formIdSignUp]);
+    const signUpResponse = await handleSignUp(formsData[formIdSignUp]);
 
-    const signUpResponseRaw = await handleSignUp(formsData[formIdSignUp]);
-    const signUpResponse = await signUpResponseRaw.json();
-
-    if (signUpResponse.signup_successful) {
-      document.location.replace("/");
+    if (signUpResponse.ok) {
+      document.location.replace("/login");
     } else {
       somethingWrongError.hidden = false;
     }
