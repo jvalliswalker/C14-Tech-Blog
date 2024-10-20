@@ -6,10 +6,10 @@
       </div>
     </nav>
     <div class="page-body">
-      <div style="max-height: 65vh; overflow: scroll;">
+      <div>
         {{#each posts}}
           <div class="mb-3">
-            {{> blog-post post=this hasCommentButton=true}}
+            {{> blog-pill post=this clickEffect="comment"}}
           </div>
         {{/each}}
       </div>

@@ -15,10 +15,10 @@
   </nav>
   <div class="page-body">
     <h3>Existing posts</h3>
-    <div style="max-height: 65vh; overflow: scroll;">
+    <div style="max-height: 65vh;">
       {{#each posts}}
         <div class="mb-3">
-          {{> blog-post post=this hasEditButton=true overflow="overflow-hidden"}}
+          {{> blog-pill post=this clickEffect='update'}}
         </div>
       {{/each}}
     </div>
