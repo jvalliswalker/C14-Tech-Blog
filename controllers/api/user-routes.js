@@ -59,6 +59,9 @@ router.post("/sign-up", async (req, res) => {
     }
   } catch (err) {
     // Return error code and message
+    console.log('========================');
+    console.log(err)
+    console.log('========================');
     res.status(400).json(err);
   }
 });
