@@ -46,13 +46,17 @@ router.post("/sign-up", async (req, res) => {
     // Query db for user based on passed username
     const user = await User.create({
       user_name: req.body.username,
-      email: req.body.email,
       password: req.body.password,
     });
 
-    res.status(200).json({
-      signup_successful: true,
-    });
+    if(user){
+      res.status(200).json({
+        signup_successful: true,
+      });
+    }
+    else {
+      res.status(400).send();
+    }
   } catch (err) {
     // Return error code and message
     res.status(400).json(err);
