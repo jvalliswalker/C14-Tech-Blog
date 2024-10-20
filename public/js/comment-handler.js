@@ -1,11 +1,3 @@
-
-// To do: 
-// - Test and confirm new post refreshes page and displays comments
-// - Update posts displayed in homepage & dashboard to be minified version (title, date, and creator only)
-// - Create "post" page (modify blog-post.handlebars), and include post's creators username
-// Create idle logout functionality
-// Record, ship
-
 document.addEventListener('click', async (event) => {
 
   if(event.target.id == "submit-post-comment"){
