@@ -1,20 +1,10 @@
 
-
-document.addEventListener("DOMContentLoaded", async function() {
-
-    const comments = await getCommentsForPost();
-
-    // To do: 
-    // - turn console log into comment rendering over "placeholder text" in comment-post.handlebars (include commenter Username, date created, and comment content)
-    // - Test and confirm new post refreshes page and displays comments
-    // - Update posts displayed in homepage & dashboard to be minified version (title, date, and creator only)
-    // - Create "post" page (modify blog-post.handlebars), and include post's creators username
-    // Create idle logout functionality
-    // Record, ship
-    console.log(comments);
-
-    
-  });
+// To do: 
+// - Test and confirm new post refreshes page and displays comments
+// - Update posts displayed in homepage & dashboard to be minified version (title, date, and creator only)
+// - Create "post" page (modify blog-post.handlebars), and include post's creators username
+// Create idle logout functionality
+// Record, ship
 
 document.addEventListener('click', async (event) => {
 
