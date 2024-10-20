@@ -8,8 +8,7 @@ This project demonstrates the MVC model via a simple Tech Blog mockup. The Contr
 
 ## Site Link
 
-
-
+https://c14-tech-blog.onrender.com/
 
 ## Code References
 
