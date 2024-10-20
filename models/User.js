@@ -44,19 +44,6 @@ User.init(
         newUserData.password = User.encryptPassword(newUserData.password);
         return newUserData;
       }
-      // Before record update
-      // beforeSave: async (newUserData) => {
-        
-      //   // Check if password changed 
-      //   if(newUserData.changed('password')){
-      //     // Check if new password does not match existing password (after decryption check)
-      //     if(.checkPassword(newUserData.password)){
-      //       // If so, encrypt password
-      //       newUserData.password = User.encryptPassword(newUserData.password, 10);
-      //     }
-      //   }
-      //   return newUserData.password; 
-      // }
     },
     sequelize, // DB connection instance (from import) 
     timestamps: false, 
