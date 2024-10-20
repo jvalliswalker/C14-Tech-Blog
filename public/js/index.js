@@ -84,6 +84,15 @@ document.body.addEventListener("submit", async (event) => {
 
 document.addEventListener('click', async (event) => {
 
+  const elementId = event.target.id;
+
+  // Handle Logout
+  if (elementId == "button-logout") {
+    await handleLogout();
+    document.location.replace("/");
+  }
+
+  // Handle post deletion
   if(event.target.dataset.buttonType == 'deletePost') {
     const response = await handleDeletePost(
       { 
@@ -97,30 +106,7 @@ document.addEventListener('click', async (event) => {
       console.log("error");
     }
   }
-  // // Handle Delete Post
-  // if (Object.keys(formsData).includes(formIdEditPost)) {
-  //   const submitEditResponse = await handleEditPost(
-  //     {...formsData[formIdEditPost], 
-  //       postId: document.getElementById('form-edit-post').dataset.postId
-  //     } 
-  //   );
-  
-  //   if (submitEditResponse.ok) {
-  //     document.location.href = "/dashboard";
-  //   } else {
-  //     console.log("error");
-  //   }
-  // }
-
 })
-document.body.addEventListener("click", async (event) => {
-  const elementId = event.target.id;
-
-  if (elementId == "button-logout") {
-    await handleLogout();
-    document.location.replace("/");
-  }
-});
 
 // Functions
 // ====================
