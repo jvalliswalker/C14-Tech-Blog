@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 3001;
 // Create session object and pass to express app
 const sessionObject = {
   secret: "Tech Blog Secret",
-  cookie: {},
+  cookie: {
+    expires: 120000 // Set cookie to expire after 2 minutes
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
