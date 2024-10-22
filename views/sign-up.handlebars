@@ -1,0 +1,56 @@
+<div class="container mt-3 login-box">
+  <div class="row border border-5 border-black">
+    <section class="col p-0">
+      <div class="m-0 p-0 background-black text-color-white">
+        <h3 class="mx-3 pb-2">Sign Up</h3>
+      </div>
+      <form id="form-sign-up" class="mx-3 mt-2 mb-1">
+        <div>
+          <label
+            for="form-sign-up-username"
+            class="col-form-label"
+          >Username</label>
+          <input
+            class="form-control"
+            id="form-sign-up-username"
+            data-form-id="form-sign-up"
+          />
+        </div>
+        <div>
+          <label
+            for="form-sign-up-password"
+            class="col-form-label"
+          >Password</label>
+          <input
+            class="form-control"
+            id="form-sign-up-password"
+            data-form-id="form-sign-up"
+            type="password"
+          />
+        </div>
+        <div>
+          <label
+            for="form-sign-up-re-enter-password"
+            class="col-form-label"
+          >Re-Enter Password</label>
+          <input
+            class="form-control"
+            id="form-sign-up-re-enter-password"
+            data-form-id="form-sign-up"
+            type="password"
+          />
+        </div>
+        <div class="container px-0 my-3">
+          <button type="submit" class="btn btn-dark" id="submit-sign-up">Sign Up</button>
+        </div>
+        <div class="text-danger" id="sign-up-error-password-mismatch" hidden>
+          Password entries to do not match. Please re-enter.
+        </div>
+        <div class="text-danger" id="sign-up-error-something-wrong" hidden>
+          We're sorry, it looks like something went wrong. Please refresh the
+          page and try again.
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

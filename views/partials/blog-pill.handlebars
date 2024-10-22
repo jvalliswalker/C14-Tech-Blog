@@ -1,0 +1,30 @@
+<div style="position: relative;">
+
+  <div
+    class="stretched-link"
+    style="cursor: pointer;"
+    data-click-effect="{{clickEffect}}"
+    data-post-id="{{post.id}}"
+    data-identity="blog-pill"
+  >
+    <div class="card">
+      <div class="card-header pt-3">
+        <div class="row d-flex justify-content-between">
+          <div class="col-auto">
+            <h5 class="card-title">{{post.title}}</h5>
+          </div>
+          <div class="col-5">
+            <div class="row">
+              <div class="col text-end">
+                <span class="pe-1">post by</span>
+                <span class="fw-bold">{{post.user.user_name}}</span>
+                <span class="pe-1">on</span>
+                <span>{{formatDate post.created_date}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

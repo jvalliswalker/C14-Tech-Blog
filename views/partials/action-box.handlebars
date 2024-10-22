@@ -1,0 +1,68 @@
+<div class="container mt-3 login-box">
+  <div class="row border border-5 border-black">
+    <section class="col p-0">
+      <div class="m-0 p-0 background-black text-color-white">
+        <h3 class="mx-3 pb-2">{{title}}</h3>
+      </div>
+      <form id="{{formId}}" data-post-id="{{postId}}" class="mx-3 mt-2 mb-1">
+        {{#each fields}}
+          {{#if this.isTextArea}}
+            <div>
+              <label
+                for="{{this.id}}"
+                class="col-form-label"
+              >{{this.label}}</label>
+              <textarea
+                class="form-control"
+                id="{{this.id}}"
+                data-form-id="{{this.formId}}"
+                rows="{{this.rows}}"
+              >{{this.value}}</textarea>
+            </div>
+          {{else}}
+            <div>
+              <label
+                for="{{this.id}}"
+                class="col-form-label"
+              >{{this.label}}</label>
+              <input
+                class="form-control"
+                id="{{this.id}}"
+                data-form-id="{{this.formId}}"
+                value="{{this.value}}"
+              />
+            </div>
+          {{/if}}
+        {{/each}}
+        <div class="container px-0">
+          <div class="row my-3 justify-content-evenly">
+            <div class="col-3 d-flex justify-content-between">
+              {{#if hasSubmitButton}}
+                <button
+                  type="submit"
+                  class="btn btn-dark"
+                  class="submit-sign-in"
+                >Submit</button>
+              {{/if}}
+              {{#if hasDeleteButton}}
+                <button
+                  data-button-type="deletePost"
+                  type="button"
+                  class="btn btn-danger submit-sign-in me-2"
+                >Delete</button>
+              {{/if}}
+              {{#if hasUpdateButton}}
+                <button
+                  type="submit"
+                  class="btn btn-dark submit-sign-in"
+                >Submit</button>
+              {{/if}}
+            </div>
+            <div class="col">
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

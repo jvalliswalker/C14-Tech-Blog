@@ -1,0 +1,26 @@
+<div>
+  <nav class="navbar navbar-expand-lg bg-black">
+    <div class="container mx-0">
+    <div class="row">
+        <div class="col px-0">
+            <div class="page-title">
+            Dashboard
+            </div>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <div class="btn btn-primary pt-0 d-flex align-items-center" id="new-post">New Post</div>
+        </div>
+    </div>
+    </div>
+  </nav>
+  <div class="page-body">
+    <h3>Existing posts</h3>
+    <div style="max-height: 65vh;">
+      {{#each posts}}
+        <div class="mb-3">
+          {{> blog-pill post=this clickEffect='update'}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+:root {
+    --background-color: #D9EAD3;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    font-size: larger;
+}
+
+header {
+    background-color: black;
+    color: white;
+}
+
+nav {
+
+}
+
+ul {
+    margin: 0px;
+}
+
+.background-black {
+    background-color: black;
+}
+
+.page-title {
+    background-color: var(--background-color);
+    border-radius: 4px;
+    padding: 6px;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px #aebda9;
+    font-weight: bold;
+}
+
+
+.page-body {
+    margin-top: 3rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.text-color-white {
+    color: white;
+}
+
+.login-box {
+    max-width: 100vh;
+}

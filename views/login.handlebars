@@ -1,0 +1,53 @@
+<div class="container mt-3 login-box">
+  <div class="row border border-5 border-black">
+    <section class="col p-0">
+      <div class="m-0 p-0 background-black text-color-white">
+        <h3 class="mx-3 pb-2">Sign In</h3>
+      </div>
+      <form id="form-login" class="mx-3 mt-2 mb-1">
+        <div>
+          <label
+            for="form-login-username"
+            class="col-form-label"
+          >Username</label>
+          <input
+            class="form-control"
+            id="form-login-username"
+            data-form-id="form-login"
+          />
+        </div>
+        <div>
+          <label
+            for="form-login-password"
+            class="col-form-label"
+          >Password</label>
+          <input
+            class="form-control"
+            id="form-login-password"
+            data-form-id="form-login"
+            type="password"
+          />
+        </div>
+        <div class="container px-0">
+          <div class="row mt-3 justify-content-evenly">
+            <div class="col-3">
+              <button
+                type="submit"
+                class="btn btn-dark"
+                class="submit-sign-in"
+              >Submit</button>
+            </div>
+            <div class="col">
+              <div class="mt-2 text-end">
+                <p>Don't have a username?
+                  <a href="/sign-up">Click here</a>
+                  to sign up!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-danger" id="login-error-message" hidden>Invalid username or password. Please try again.</div>
+      </form>
+    </section>
+  </div>
+</div>
